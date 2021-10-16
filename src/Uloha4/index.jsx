@@ -1,5 +1,15 @@
-import React from 'react'
-import './carousel.css'
+import React, { useState } from 'react';
+import './carousel.css';
+
+const obrazky = [
+  'https://source.unsplash.com/WLUHO9A_xik/880x500',
+  'https://source.unsplash.com/DA1eGglMmlg/880x500',
+  'https://source.unsplash.com/kTxL6le0Wgk/880x500',
+  'https://source.unsplash.com/7go5UASxmDY/880x500',
+  'https://source.unsplash.com/YmATDIFsCmQ/880x500',
+];
+
+
 
 // Tvoříš jednoduchou galerii, kde se jde klikáním
 // na tlačítka přesouvat na další nebo předchozí obrázky.
@@ -32,21 +42,37 @@ https://source.unsplash.com/YmATDIFsCmQ/880x500
 // Nastav tlačítkům atribut `disabled`, pokud v jejich směru už není
 // žádný obrázek.
 
+  
 
 const Uloha4 = () => {
+  const [cisloObrazku, setCisloObrazku] = useState(0);
+  //const [dalsi, setDalsi] = useState(true);
+
+  const handleClickRight = () => {
+    setCisloObrazku(cisloObrazku + 1);
+ 
+  }
+
+  const handleClickLeft = () => {
+    setCisloObrazku(cisloObrazku - 1);
+   
+  }
+
+
+
 	return (
 		<div className="carousel">
-			<button className="carousel__predchozi" aria-label="předchozí">
+			<button onClick={handleClickLeft} className="carousel__predchozi" aria-label="předchozí" >
 				←
 			</button>
 			<div className="carousel__media">
 				<img
 					className="carousel__image"
-					src="https://source.unsplash.com/7go5UASxmDY/880x500"
-					alt=""
+					src={obrazky[cisloObrazku]}
+					alt={"Obrázek číslo " + {cisloObrazku}}
 				/>
 			</div>
-			<button className="carousel__dalsi" aria-label="další">
+			<button onClick={handleClickRight} className="carousel__dalsi" aria-label="další" >
 				→
 			</button>
 		</div>
