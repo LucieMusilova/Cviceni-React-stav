@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react';
 import './ukazatel-uspechu.css'
 
 // Děláš jednoduchou komponentu, která ukazuje "progress bar",
 // proužek, který ukazuje pokrok v nějakém procesu.
 
 // Zadání 1:
-// Použij prop `barva` ve style atributu, aby bal proužek barvou
+// Použij prop `barva` ve style atributu, aby byl proužek barvou
 // předanou jako prop do komponenty.
 
 // Zadání 2:
@@ -19,18 +19,27 @@ import './ukazatel-uspechu.css'
 // Nastav prvku `ukazatel-uspechu__postup` šířku podle stavové proměnné.
 
 const UkazatelPokroku = ({ barva }) => {
+  const [postup, setPostup] = useState(0);
+
+  const handleClick = () => {
+    console.log(postup)
+    if(postup < 100) {
+      setPostup(postup + 10);
+    }
+};
+  
 	return (
 		<div className="ukazatel-uspechu">
 			<div className="ukazatel-uspechu__ramecek">
 				<div
 					className="ukazatel-uspechu__postup"
 					style={{
-						width: '40%',
-						backgroundColor: 'red',
+						width: `${postup}%`,
+						backgroundColor: `${barva}`,
 					}}
 				></div>
 			</div>
-			<button>postoupit o 10 %</button>
+			<button onClick={handleClick}>postoupit o 10 %</button>
 		</div>
 	)
 }

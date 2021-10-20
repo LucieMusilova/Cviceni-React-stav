@@ -1,5 +1,5 @@
-import React from 'react'
-import './hamburger.css'
+import React, { useState } from 'react';
+import './hamburger.css';
 
 // Tvoříš rozbalovací hamburger menu.
 
@@ -18,14 +18,28 @@ import './hamburger.css'
 // Pro otevřené přidej navíc `hamburger--otevrene`.
 
 const Uloha5 = () => {
-	return (
+  const [close, setClose] = useState(false);
+
+  const menu = () => {
+    if (!close) {
+      setClose(true);
+      document.querySelector(".polozky").style.display="none";
+      document.querySelector(".hamburger").classList.remove("hamburger--otevrene");
+    } else {
+      setClose(false);
+      document.querySelector(".polozky").style.display="inline-block";
+      document.querySelector(".hamburger").classList.add("hamburger--otevrene");
+    }
+  }
+
+  return(
 		<>
-			<button className="hamburger" aria-label="menu">
+			<button className="hamburger" aria-label="menu" onClick={menu}>
 				<span></span>
 				<span></span>
 				<span></span>
 			</button>
-			<ul>
+			<ul className="polozky">
 				<li>
 					<a href="#o-nas">O nás</a>
 				</li>
@@ -40,7 +54,7 @@ const Uloha5 = () => {
 				</li>
 			</ul>
 		</>
-	)
+  )
 }
 
 export default Uloha5;

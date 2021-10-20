@@ -46,23 +46,36 @@ https://source.unsplash.com/YmATDIFsCmQ/880x500
 
 const Uloha4 = () => {
   const [cisloObrazku, setCisloObrazku] = useState(0);
-  //const [dalsi, setDalsi] = useState(true);
+  const [dalsiPrave, setDalsiPrave] = useState(false);
+  const [dalsiLeve, setDalsiLeve] = useState(true);
 
   const handleClickRight = () => {
+    if (cisloObrazku === (obrazky.length - 2)) {
+      setDalsiPrave(true);
+    } else {
+      setDalsiPrave(false);
+    };
+   
     setCisloObrazku(cisloObrazku + 1);
- 
-  }
+    setDalsiLeve(false);
+  };
 
   const handleClickLeft = () => {
+    if (cisloObrazku >= 2) {
+      setDalsiLeve(false);
+    } else {
+      setDalsiLeve(true);
+    };
+
     setCisloObrazku(cisloObrazku - 1);
-   
-  }
+    setDalsiPrave(false);
+  };
 
 
 
 	return (
 		<div className="carousel">
-			<button onClick={handleClickLeft} className="carousel__predchozi" aria-label="předchozí" >
+			<button onClick={handleClickLeft} className="carousel__predchozi" aria-label="předchozí" disabled={dalsiLeve} >
 				←
 			</button>
 			<div className="carousel__media">
@@ -72,11 +85,11 @@ const Uloha4 = () => {
 					alt={"Obrázek číslo " + {cisloObrazku}}
 				/>
 			</div>
-			<button onClick={handleClickRight} className="carousel__dalsi" aria-label="další" >
+			<button onClick={handleClickRight} className="carousel__dalsi" aria-label="další" disabled={dalsiPrave}>
 				→
 			</button>
 		</div>
 	)
-}
+};
 
 export default Uloha4;

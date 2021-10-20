@@ -1,5 +1,5 @@
-import React from 'react'
-import './ukol.css'
+import React, { useState } from 'react';
+import './ukol.css';
 
 // Děláš jednoduchou komponentu zobrazující úkoly,
 // které jdou označit jako splněné.
@@ -17,18 +17,39 @@ import './ukol.css'
 // Je-li úkol splněný, nerenderuj tlačítko a k `li` přidej navíc třídu `ukol--splnen`.
 
 const Ukol = ({ nazev }) => {
+
+  const [hotovo, setHotovo] = useState(false);
+
+  const handleClick = () => {
+        setHotovo(true);
+        document.querySelector(".ukol__akce").style.display="none";
+        document.querySelector(".ukol").classList.add("ukol--splnen");
+        console.log(hotovo);
+    
+  };
+
 	return (
 		<li className="ukol">
 			<span className="ukol__nazev">{nazev}</span>
-			<button className="ukol__akce">splnit</button>
+			<button onClick={handleClick} className="ukol__akce">splnit</button>
 		</li>
 	)
 }
 
+
+
 const Uloha6 = () => {
 	const ukoly = ['Zamést', 'Pověsit prádlo', 'Umýt okna', 'Vynést koš']
 
-	return <ul>{ukoly}</ul>
+	return (
+    <ul>
+      {
+        ukoly.map(
+          (ukol, index) => <Ukol key={index} nazev={ukol}/>
+          )
+      }
+    </ul>
+  )
 }
 
 export default Uloha6;
