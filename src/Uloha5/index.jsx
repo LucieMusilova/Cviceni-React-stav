@@ -18,28 +18,16 @@ import './hamburger.css';
 // Pro otevřené přidej navíc `hamburger--otevrene`.
 
 const Uloha5 = () => {
-  const [close, setClose] = useState(false);
-
-  const menu = () => {
-    if (!close) {
-      setClose(true);
-      document.querySelector(".polozky").style.display="none";
-      document.querySelector(".hamburger").classList.remove("hamburger--otevrene");
-    } else {
-      setClose(false);
-      document.querySelector(".polozky").style.display="inline-block";
-      document.querySelector(".hamburger").classList.add("hamburger--otevrene");
-    }
-  }
+  const [open, setOpen] = useState(false);
 
   return(
 		<>
-			<button className="hamburger" aria-label="menu" onClick={menu}>
+			<button className={open ? 'hamburger hamburger--otevrene' : 'hamburger'} aria-label="menu" onClick={()=>setOpen(!open)}>
 				<span></span>
 				<span></span>
 				<span></span>
 			</button>
-			<ul className="polozky">
+			{open ? (< ul className="polozky">
 				<li>
 					<a href="#o-nas">O nás</a>
 				</li>
@@ -52,7 +40,7 @@ const Uloha5 = () => {
 				<li>
 					<a href="#cenik">Ceník</a>
 				</li>
-			</ul>
+			</ul>) : "" }
 		</>
   )
 }

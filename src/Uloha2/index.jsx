@@ -15,28 +15,21 @@ const Pocitadlo = () => {
 
   const [cislo, setCislo] = useState(0);
 
-  const handleClick = (event) => {
-    if (event.target.innerText === '-5') {
-      setCislo(cislo - 5);
-    } else if (event.target.innerText === '-1') {
-      setCislo(cislo - 1)
-    } else if (event.target.innerText === 'Vynulovat') {
-      setCislo(0);
-    } else if (event.target.innerText === '+1') {
-      setCislo(cislo + 1);
-    } else if (event.target.innerText === '+5') {
-      setCislo(cislo + 5);
-    }
-  }
+  const handleClickM5 = () => setCislo(cislo - 5);
+  const handleClickM1 = () => setCislo(cislo - 1);
+  const handleClick = () => setCislo(0);
+  const handleClickP1 = () => setCislo(cislo + 1);
+  const handleClickP5 = () => setCislo(cislo + 5);
+
 
 	return (
 		<>
 			<h3>Počítadlo: {cislo}</h3>
-			<button onClick={handleClick}>-5</button>
-			<button onClick={handleClick}>-1</button>
+			<button onClick={handleClickM5}>-5</button>
+			<button onClick={handleClickM1}>-1</button>
 			<button onClick={handleClick}>Vynulovat</button>
-			<button onClick={handleClick}>+1</button>
-			<button onClick={handleClick}>+5</button>
+			<button onClick={handleClickP1}>+1</button>
+			<button onClick={handleClickP5}>+5</button>
 		</>
 	)
 }
