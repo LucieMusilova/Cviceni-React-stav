@@ -55,7 +55,7 @@ const Uloha4 = () => {
     } else {
       setDalsiPrave(false);
     };
-   
+  
     setCisloObrazku(cisloObrazku + 1);
     setDalsiLeve(false);
   };

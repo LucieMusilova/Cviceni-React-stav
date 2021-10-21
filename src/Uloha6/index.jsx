@@ -20,7 +20,6 @@ const Ukol = ({ nazev }) => {
 
   const [hotovo, setHotovo] = useState(false);
 
-
 	return (
 		<li className={hotovo ? 'ukol--splnen' : 'ukol'}>
 			<span className="ukol__nazev">{nazev}</span>
@@ -28,8 +27,6 @@ const Ukol = ({ nazev }) => {
 		</li>
 	)
 }
-
-
 
 const Uloha6 = () => {
 	const ukoly = ['Zamést', 'Pověsit prádlo', 'Umýt okna', 'Vynést koš']

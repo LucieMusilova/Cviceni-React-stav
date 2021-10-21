@@ -21,7 +21,6 @@ const Pocitadlo = () => {
   const handleClickP1 = () => setCislo(cislo + 1);
   const handleClickP5 = () => setCislo(cislo + 5);
 
-
 	return (
 		<>
 			<h3>Počítadlo: {cislo}</h3>

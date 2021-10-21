@@ -21,7 +21,6 @@ const Uloha1 = () => {
   const vypnout = () => {
     setJeZapnuta(false)
   }
-  
   const zapnout = () => {
     setJeZapnuta(true)
   }

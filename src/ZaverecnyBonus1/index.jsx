@@ -30,11 +30,6 @@ const ZaverecnyBonus1 = () => {
     if(event.target.value == 0) {
       console.log('Uživatel nenapsal nic.')
     }
-    if(pocet >= 7) {
-      document.querySelector(".heslo").style.display="none";
-    } else {
-      document.querySelector(".heslo").style.display="inline-block";
-    }
   }
 
 	return (
@@ -46,7 +41,7 @@ const ZaverecnyBonus1 = () => {
 				Do políčka výše uživatel napsal: <b>{obsah}</b>
 			</p>
 			<p>Počet znaků: {pocet}</p>
-			<p className="heslo">Jako heslo by text neobstál.</p>
+			{pocet < 8 ? <p>Jako heslo by text neobstál.</p> : '' }
 		</>
 	)
 }
