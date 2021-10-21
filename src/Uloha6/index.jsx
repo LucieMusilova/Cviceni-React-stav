@@ -20,18 +20,11 @@ const Ukol = ({ nazev }) => {
 
   const [hotovo, setHotovo] = useState(false);
 
-  const handleClick = () => {
-        setHotovo(true);
-        document.querySelector(".ukol__akce").style.display="none";
-        document.querySelector(".ukol").classList.add("ukol--splnen");
-        console.log(hotovo);
-    
-  };
 
 	return (
-		<li className="ukol">
+		<li className={hotovo ? 'ukol--splnen' : 'ukol'}>
 			<span className="ukol__nazev">{nazev}</span>
-			<button onClick={handleClick} className="ukol__akce">splnit</button>
+			<button onClick={()=>setHotovo(true)} className="ukol__akce">splnit</button>
 		</li>
 	)
 }

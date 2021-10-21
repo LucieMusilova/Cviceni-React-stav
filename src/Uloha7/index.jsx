@@ -20,13 +20,6 @@ import './ukazatel-uspechu.css'
 
 const UkazatelPokroku = ({ barva }) => {
   const [postup, setPostup] = useState(0);
-
-  const handleClick = () => {
-    console.log(postup)
-    if(postup < 100) {
-      setPostup(postup + 10);
-    }
-};
   
 	return (
 		<div className="ukazatel-uspechu">
@@ -39,7 +32,7 @@ const UkazatelPokroku = ({ barva }) => {
 					}}
 				></div>
 			</div>
-			<button onClick={handleClick}>postoupit o 10 %</button>
+			<button onClick={()=> (postup < 100) ? setPostup(postup + 10) : postup}>postoupit o 10 %</button>
 		</div>
 	)
 }
